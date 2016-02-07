@@ -49,6 +49,7 @@ public class MotionAndPenPrims {
 		primTable["turnLeft:"]			= primTurnLeft;
 		primTable["heading:"]			= primSetDirection;
 		primTable["pointTowards:"]		= primPointTowards;
+		primTable["pointTowardsPos:"]   = primPointTowardsPos;
 		primTable["gotoX:y:"]			= primGoTo;
 		primTable["gotoSpriteOrMouse:"]	= primGoToSpriteOrMouse;
 		primTable["glideSecs:toX:y:elapsed:from:"] = primGlide;
@@ -115,6 +116,17 @@ public class MotionAndPenPrims {
 		if ((s == null) || (p == null)) return;
 		var dx:Number = p.x - s.scratchX;
 		var dy:Number = p.y - s.scratchY;
+		var angle:Number = 90 - ((Math.atan2(dy, dx) * 180) / Math.PI);
+		s.setDirection(angle);
+		if (s.visible) interp.redraw();
+	}
+
+	private function primPointTowardsPos(b:Block):void {
+		var s:ScratchSprite = interp.targetSprite();
+		var px:int = interp.arg(b, 0);
+		var py:int = interp.arg(b, 1);
+		var dx:Number = px - s.scratchX;
+		var dy:Number = py - s.scratchY;
 		var angle:Number = 90 - ((Math.atan2(dy, dx) * 180) / Math.PI);
 		s.setDirection(angle);
 		if (s.visible) interp.redraw();

@@ -119,6 +119,7 @@ public class Specs {
 		["--"],
 		["point in direction %d.direction",		" ", 1, "heading:",					90],
 		["point towards %m.spriteOrMouse",		" ", 1, "pointTowards:",			""],
+		["point towards x:%n y:%n",             " ", 1, "pointTowardsPos:"],
 		["--"],
 		["go to x:%n y:%n",						" ", 1, "gotoX:y:"],
 		["go to %m.spriteOrMouse",				" ", 1, "gotoSpriteOrMouse:",		"mouse-pointer"],
@@ -357,6 +358,8 @@ public class Specs {
 
 
 		// variables
+		["Val of %s",                           "r", 9, "getVar"],
+		["-"],
 		["set %m.var to %s",								" ", 9, SET_VAR],
 		["change %m.var by %n",								" ", 9, CHANGE_VAR],
 		["show variable %m.var",							" ", 9, "showVariable:"],

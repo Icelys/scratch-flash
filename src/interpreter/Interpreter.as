@@ -457,6 +457,7 @@ public class Interpreter {
 
 		// variables
 		primTable[Specs.GET_VAR]		= primVarGet;
+		primTable["getVar"]             = primVarName;
 		primTable[Specs.SET_VAR]		= primVarSet;
 		primTable[Specs.CHANGE_VAR]		= primVarChange;
 		primTable[Specs.GET_PARAM]		= primGetParam;
@@ -681,6 +682,18 @@ public class Interpreter {
 		var v:Variable = target.varCache[b.spec];
 		if (v == null) {
 			v = target.varCache[b.spec] = target.lookupOrCreateVar(b.spec);
+			if (v == null) return 0;
+		}
+		// XXX: Do we need a get() for persistent variables here ?
+		return v.value;
+	}
+
+	private function primVarName(b:Block):* {
+		var target:ScratchObj = app.runtime.currentDoObj ? app.runtime.currentDoObj : activeThread.target;
+
+		var v:Variable = target.varCache[arg(b, 0)];
+		if (v == null) {
+			v = target.varCache[arg(b, 0)] = target.lookupOrCreateVar(arg(b, 0));
 			if (v == null) return 0;
 		}
 		// XXX: Do we need a get() for persistent variables here ?
