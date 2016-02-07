@@ -317,16 +317,27 @@ public class Specs {
 		["username",							"r", 107, "getUserName"],
 
 		// operators
+
+/**/	["true",                                            "b", 8, "getTrue"],
+/**/	["false",                                           "b", 8, "getFalse"],
+
+		["-"],
 		["%n + %n",								"r", 8, "+",					"", ""],
 		["%n - %n",								"r", 8, "-",					"", ""],
 		["%n * %n",								"r", 8, "*",					"", ""],
 		["%n / %n",								"r", 8, "/",					"", ""],
+
+/**/	["%n ^ %n",                             "r", 8, "toThePowerof",         "", ""],
+
 		["-"],
 		["pick random %n to %n",		"r", 8, "randomFrom:to:",		1, 10],
 		["-"],
 		["%s < %s",								"b", 8, "<",					"", ""],
 		["%s = %s",								"b", 8, "=",					"", ""],
 		["%s > %s",								"b", 8, ">",					"", ""],
+
+/**/	["%s ≠ %s",                             "b", 8, "notE",                  "", ""],
+
 		["-"],
 		["%b and %b",							"b", 8, "&"],
 		["%b or %b",							"b", 8, "|"],
@@ -334,12 +345,16 @@ public class Specs {
 		["-"],
 		["join %s %s",							"r", 8, "concatenate:with:",	"hello ", "world"],
 		["letter %n of %s",						"r", 8, "letter:of:",			1, "world"],
+
+/**/	["letters %n to %n of %s",              "r", 8, "lettersFrom", 1, 5, "Hello, world"],
+
 		["length of %s",						"r", 8, "stringLength:",		"world"],
 		["-"],
 		["%n mod %n",							"r", 8, "%",					"", ""],
 		["round %n",							"r", 8, "rounded", 				""],
 		["-"],
 		["%m.mathOp of %n",						"r", 8, "computeFunction:of:",	"sqrt", 9],
+
 
 		// variables
 		["set %m.var to %s",								" ", 9, SET_VAR],
@@ -364,12 +379,15 @@ public class Specs {
 
 		//MyBlocks
 	  //["Say Hello",                                       " ", 13, "mySayHello"],
-		["%s ≠ %s",                                         "b", 13, "notE", "hello", "world"],
-		["letters %n to %n of %s",                          "r", 13, "lettersFrom", 1, 5, "Hello, world"],
-		["%n ^ %n",                                         "r", 13, "toThePowerof", 2, 3],
+		
+		
 	  //["Encode %s",                                       "r", 13, "encode", "Hello"],
 		["Is %s in %s?",                                    "b", 13, "regex", "123", "abc"],
 		["Replace %s with %s in %s",                        "r", 13, "replaceStr", "Hi", "Hello", "Hi world"],
+		["-"],
+		["%b nand %b",                                      "b", 13, "nand"],
+		["%b nor %b",                                       "b", 13, "nor"],
+
 
 
 

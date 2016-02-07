@@ -66,6 +66,12 @@ public class Primitives {
 		primTable["toThePowerof"]   = function(b:*):* { return Math.pow(interp.arg(b, 0), interp.arg(b, 1)) };
 		primTable["regex"]          = function(b:*):* { return (interp.arg(b, 1).search(new RegExp(interp.arg(b, 0), "g")) != -1) };
 		primTable["replaceStr"]     = function(b:*):* { return interp.arg(b, 2).replace(new RegExp(interp.arg(b, 0), "g"), interp.arg(b, 1)) };
+		primTable["getTrue"]        = function(b:*):* { return true };
+		primTable["getFalse"]       = function(b:*):* { return false };
+		primTable["nand"]           = function(b:*):* { return !(interp.arg(b, 0) && interp.arg(b, 1)) };
+		primTable["nor"]            = function(b:*):* { return !(interp.arg(b, 0) || interp.arg(b, 1)) };
+		
+
 
 
 		/*
