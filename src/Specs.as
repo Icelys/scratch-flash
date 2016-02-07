@@ -72,6 +72,7 @@ public class Specs {
 		[10, "More Blocks",	procedureColor],
 		[11, "Parameter",	parameterColor],
 		[12, "List",		listColor],
+		[13, "My Blocks",   0x919191],
 		[20, "Extension",	extensionsColor],
 	];
 
@@ -359,6 +360,19 @@ public class Specs {
 		["-"],
 		["show list %m.list",								" ", 12, "showList:"],
 		["hide list %m.list",								" ", 12, "hideList:"],
+
+
+		//MyBlocks
+	  //["Say Hello",                                       " ", 13, "mySayHello"],
+		["%s ≠ %s",                                         "b", 13, "notE", "hello", "world"],
+		["letters %n to %n of %s",                          "r", 13, "lettersFrom", 1, 5, "Hello, world"],
+		["%n ^ %n",                                         "r", 13, "toThePowerof", 2, 3],
+	  //["Encode %s",                                       "r", 13, "encode", "Hello"],
+		["Is %s in %s?",                                    "b", 13, "regex", "123", "abc"],
+		["Replace %s with %s in %s",                        "r", 13, "replaceStr", "Hi", "Hello", "Hi world"],
+
+
+
 
 		// obsolete blocks from Scratch 1.4 that may be used in older projects
 		["play drum %n for %n beats",			" ", 98, "drum:duration:elapsed:from:", 1, 0.25], // Scratch 1.4 MIDI drum

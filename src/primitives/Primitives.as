@@ -59,6 +59,31 @@ public class Primitives {
 		primTable["abs"]			= function(b:*):* { return Math.abs(interp.numarg(b, 0)) };
 		primTable["sqrt"]			= function(b:*):* { return Math.sqrt(interp.numarg(b, 0)) };
 
+
+		//My Things
+		primTable["notE"]           = function(b:*):* { return interp.arg(b, 0)!=interp.arg(b, 1)};
+		primTable["lettersFrom"]    = function(b:*):* { return interp.arg(b, 2).substr(interp.arg(b, 0)-1, interp.arg(b, 1)) };
+		primTable["toThePowerof"]   = function(b:*):* { return Math.pow(interp.arg(b, 0), interp.arg(b, 1)) };
+		primTable["regex"]          = function(b:*):* { return (interp.arg(b, 1).search(new RegExp(interp.arg(b, 0), "g")) != -1) };
+		primTable["replaceStr"]     = function(b:*):* { return interp.arg(b, 2).replace(new RegExp(interp.arg(b, 0), "g"), interp.arg(b, 1)) };
+
+
+		/*
+		primTable["encode"]         = function(b:*):* {
+			var t:String = interp.arg(b, 0);
+			var chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-=_+[]\\{}|;':\",./<>?`~ ";
+			var i:int = 0;
+			var r:String = "";
+			for(i=0; i<chars.length; i++){
+				r.concat(chars.indexOf(t.charAt(i)) < 10 ? "0" + chars.indexOf(t.charAt(i)) : chars.indexOf(t.charAt(i)));
+			}
+
+			return r;
+		};
+		*/
+		
+
+
 		primTable["concatenate:with:"]	= function(b:*):* { return ("" + interp.arg(b, 0) + interp.arg(b, 1)).substr(0, 10240); };
 		primTable["letter:of:"]			= primLetterOf;
 		primTable["stringLength:"]		= function(b:*):* { return String(interp.arg(b, 0)).length };
@@ -71,6 +96,8 @@ public class Primitives {
 		primTable["createCloneOf"]		= primCreateCloneOf;
 		primTable["deleteClone"]		= primDeleteClone;
 		primTable["whenCloned"]			= interp.primNoop;
+
+		primTable["mySayHello"]         = function(b:*):* { trace("How?") };
 
 		// testing (for development)
 		primTable["NOOP"]				= interp.primNoop;
