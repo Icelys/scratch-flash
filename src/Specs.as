@@ -387,7 +387,7 @@ public class Specs {
 		
 		
 	    ["Encode %s",                                       "r", 13, "encode", "Hello"],
-	    ["Decode %s",                                       "r", 13, "decode", "010203"],
+	    ["Decode %s",                                       "r", 13, "decode", "0831383841"],
 	    ["-"],
 		["Is %s in %s?",                                    "b", 13, "regex", "123", "abc"],
 		["Replace %s with %s in %s",                        "r", 13, "replaceStr", "Hi", "Hello", "Hi world"],
