@@ -457,7 +457,9 @@ public class Interpreter {
 
 		// variables
 		primTable[Specs.GET_VAR]		= primVarGet;
+
 		primTable["getVar"]             = primVarName;
+		
 		primTable[Specs.SET_VAR]		= primVarSet;
 		primTable[Specs.CHANGE_VAR]		= primVarChange;
 		primTable[Specs.GET_PARAM]		= primGetParam;

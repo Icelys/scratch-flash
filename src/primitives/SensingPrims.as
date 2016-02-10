@@ -236,6 +236,9 @@ public class SensingPrims {
 		if (key == 'up arrow') ch = 30;
 		if (key == 'down arrow') ch = 31;
 		if (key == 'space') ch = 32;
+		if (key == 'enter') ch = 13;
+		if (key == 'tab') ch = 9;
+		if (key == 'backspace') ch = 8;
 		return app.runtime.keyIsDown[ch];
 	}
 

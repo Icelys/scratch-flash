@@ -38,8 +38,8 @@ public class BlockMenus implements DragClient {
 	private var block:Block;
 	private var blockArg:BlockArg; // null if menu is invoked on a block
 
-	private static const basicMathOps:Array = ['+', '-', '*', '/'];
-	private static const comparisonOps:Array = ['<', '=', '>'];
+	private static const basicMathOps:Array = ['+', '-', '*', '/', '^'];
+	private static const comparisonOps:Array = ['<', '=', '>', '≠'];
 
 	private static const spriteAttributes:Array = ['x position', 'y position', 'direction', 'costume #', 'costume name', 'size', 'volume'];
 	private static const stageAttributes:Array = ['backdrop #', 'backdrop name', 'volume'];
@@ -134,7 +134,7 @@ public class BlockMenus implements DragClient {
 			handler.videoStateMenu(evt);
 		}
 		return [
-			'up arrow', 'down arrow', 'right arrow', 'left arrow', 'space', 'any',
+			'up arrow', 'down arrow', 'right arrow', 'left arrow', 'space', 'enter', 'tab', 'any',
 			'other scripts in sprite', 'other scripts in stage',
 			'backdrop #', 'backdrop name', 'volume', 'OK', 'Cancel',
 			'Edit Block', 'Rename' , 'New name', 'Delete', 'Broadcast', 'New Message', 'Message Name',
@@ -296,7 +296,7 @@ public class BlockMenus implements DragClient {
 
 	private function keyMenu(evt:MouseEvent):void {
 		var ch:int;
-		var namedKeys:Array = ['space', 'up arrow', 'down arrow', 'right arrow', 'left arrow', 'any'];
+		var namedKeys:Array = ['space', 'up arrow', 'down arrow', 'right arrow', 'left arrow', 'enter', 'tab', 'backspace', 'any'];
 		var m:Menu = new Menu(setBlockArg, 'key');
 		for each (var s:String in namedKeys) m.addItem(s);
 		for (ch = 97; ch < 123; ch++) m.addItem(String.fromCharCode(ch)); // a-z

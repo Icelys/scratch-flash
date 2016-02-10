@@ -70,6 +70,7 @@ public class LooksPrims {
 //		primTable['hideAll']				= primHideAll;
 
 		primTable['comeToFront']			= primGoFront;
+		primTable['goToBack']               = primGoToBack
 		primTable['goBackByLayers:']		= primGoBack;
 
 		primTable['setVideoState']			= primSetVideoState;
@@ -288,6 +289,13 @@ public class LooksPrims {
 			s.parent.setChildIndex(s, newIndex);
 			if (s.visible) interp.redraw();
 		}
+	}
+
+	private function primGoToBack(b:Block):void {
+		var s:ScratchSprite = interp.targetSprite();
+		if ((s == null) || (s.parent == null)) return;
+		s.parent.setChildIndex(s, minSpriteLayer());
+		if (s.visible) interp.redraw();
 	}
 
 	private function minSpriteLayer():int {

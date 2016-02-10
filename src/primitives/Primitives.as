@@ -61,32 +61,22 @@ public class Primitives {
 
 
 		//My Things
-		primTable["notE"]           = function(b:*):* { return interp.arg(b, 0)!=interp.arg(b, 1)};
+		primTable["≠"]              = function(b:*):* { return interp.arg(b, 0)!=interp.arg(b, 1)};
 		primTable["lettersFrom"]    = function(b:*):* { return interp.arg(b, 2).substr(interp.arg(b, 0)-1, interp.arg(b, 1)) };
-		primTable["toThePowerof"]   = function(b:*):* { return Math.pow(interp.arg(b, 0), interp.arg(b, 1)) };
+		primTable["^"]              = function(b:*):* { return Math.pow(interp.arg(b, 0), interp.arg(b, 1)) };
 		primTable["regex"]          = function(b:*):* { return (interp.arg(b, 1).search(new RegExp(interp.arg(b, 0), "g")) != -1) };
 		primTable["replaceStr"]     = function(b:*):* { return interp.arg(b, 2).replace(new RegExp(interp.arg(b, 0), "g"), interp.arg(b, 1)) };
 		primTable["getTrue"]        = function(b:*):* { return true };
 		primTable["getFalse"]       = function(b:*):* { return false };
 		primTable["nand"]           = function(b:*):* { return !(interp.arg(b, 0) && interp.arg(b, 1)) };
 		primTable["nor"]            = function(b:*):* { return !(interp.arg(b, 0) || interp.arg(b, 1)) };
+		primTable["isNear"]         = primIsNear;
+		primTable["isCapital"]      = function(b:*):* { return !(interp.arg(b, 0).charAt(0).toLowerCase() == interp.arg(b, 0).charAt(0)) };
+		primTable["matchReg"]       = primMatchReg;
+		primTable["caseE"]          = function(b:*):* { return interp.arg(b, 0) == interp.arg(b, 1) };
+		primTable["encode"]         = primEncode;
+		primTable["decode"]         = primDecode;
 		
-
-
-
-		/*
-		primTable["encode"]         = function(b:*):* {
-			var t:String = interp.arg(b, 0);
-			var chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-=_+[]\\{}|;':\",./<>?`~ ";
-			var i:int = 0;
-			var r:String = "";
-			for(i=0; i<chars.length; i++){
-				r.concat(chars.indexOf(t.charAt(i)) < 10 ? "0" + chars.indexOf(t.charAt(i)) : chars.indexOf(t.charAt(i)));
-			}
-
-			return r;
-		};
-		*/
 		
 
 
@@ -123,6 +113,33 @@ public class Primitives {
 		new ListPrims(app, interp).addPrimsTo(primTable);
 	}
 
+	private function primEncode(b:Block):String {
+			var t:String = interp.arg(b, 0);
+			var chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-=_+[]\\{}|;':\",./<>?`~ ";
+			var i:int = 0;
+			var r:String = "";
+			var charToBeAdded:String = ""
+			for(i=0; i<t.length; i++){
+				charToBeAdded = ((chars.indexOf(t.charAt(i)))+1).toString();
+				r += (charToBeAdded.length == 1 ? "0"+charToBeAdded : charToBeAdded);
+			}
+
+			return r;
+	}
+
+	private function primDecode(b:Block):String {
+			var t:String = interp.arg(b, 0); //010203
+			var chars:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-=_+[]\\{}|;':\",./<>?`~ ";
+			var i:int = 0;
+			var r:String = "";
+			var charToBeAdded:String = ""
+			for(i=0; i<t.length; i+=2){
+				r += chars.charAt(parseInt(t.substr(i, 2))-1);
+			}
+
+			return r;
+	}
+
 	private function primRandom(b:Block):Number {
 		var n1:Number = interp.numarg(b, 0);
 		var n2:Number = interp.numarg(b, 1);
@@ -139,6 +156,11 @@ public class Primitives {
 			return low + int(Math.random() * ((hi + 1) - low));
 
 		return (Math.random() * (hi - low)) + low;
+	}
+
+	private function primMatchReg(b:Block):Boolean {
+		var reg:RegExp = new RegExp(interp.arg(b, 0), "g");
+		return interp.arg(b, 1).match(reg).length != 0;
 	}
 
 	private function primLetterOf(b:Block):String {
@@ -236,6 +258,13 @@ public class Primitives {
 		clone.parent.removeChild(clone);
 		app.interp.stopThreadsFor(clone);
 		app.runtime.cloneCount--;
+	}
+
+	private function primIsNear(b:Block):Boolean {
+		var tocompare:int = interp.arg(b, 0);
+		var dist:int = interp.arg(b, 1);
+		var targ:int = interp.arg(b, 2);
+		return (Math.abs(tocompare-targ)<=dist);
 	}
 
 }}

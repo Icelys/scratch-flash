@@ -139,6 +139,7 @@ public class Specs {
 		["direction",							"r", 1, "heading"],
 
 		// looks
+
 		["say %s for %n secs",					" ", 2, "say:duration:elapsed:from:",	"Hello!", 2],
 		["say %s",								" ", 2, "say:",							"Hello!"],
 		["think %s for %n secs",				" ", 2, "think:duration:elapsed:from:", "Hmm...", 2],
@@ -159,6 +160,7 @@ public class Specs {
 		["set size to %n%",						" ", 2, "setSizeTo:", 				100],
 		["-"],
 		["go to front",							" ", 2, "comeToFront"],
+
 		["go back %n layers",					" ", 2, "goBackByLayers:", 			1],
 		["-"],
 		["costume #",							"r", 2, "costumeIndex"],
@@ -328,7 +330,7 @@ public class Specs {
 		["%n * %n",								"r", 8, "*",					"", ""],
 		["%n / %n",								"r", 8, "/",					"", ""],
 
-/**/	["%n ^ %n",                             "r", 8, "toThePowerof",         "", ""],
+/**/	["%n ^ %n",                             "r", 8, "^",         "", ""],
 
 		["-"],
 		["pick random %n to %n",		"r", 8, "randomFrom:to:",		1, 10],
@@ -337,7 +339,7 @@ public class Specs {
 		["%s = %s",								"b", 8, "=",					"", ""],
 		["%s > %s",								"b", 8, ">",					"", ""],
 
-/**/	["%s ≠ %s",                             "b", 8, "notE",                  "", ""],
+/**/	["%s ≠ %s",                             "b", 8, "≠",                  "", ""],
 
 		["-"],
 		["%b and %b",							"b", 8, "&"],
@@ -384,12 +386,19 @@ public class Specs {
 	  //["Say Hello",                                       " ", 13, "mySayHello"],
 		
 		
-	  //["Encode %s",                                       "r", 13, "encode", "Hello"],
+	    ["Encode %s",                                       "r", 13, "encode", "Hello"],
+	    ["Decode %s",                                       "r", 13, "decode", "010203"],
+	    ["-"],
 		["Is %s in %s?",                                    "b", 13, "regex", "123", "abc"],
 		["Replace %s with %s in %s",                        "r", 13, "replaceStr", "Hi", "Hello", "Hi world"],
 		["-"],
 		["%b nand %b",                                      "b", 13, "nand"],
 		["%b nor %b",                                       "b", 13, "nor"],
+		["%s == %s",                                        "b", 13, "caseE"],
+		["-"],
+		["Is %n within %n of %n?",                          "b", 13, "isNear", 5, 10, 2],
+		["Is %s uppercase?",                                "b", 13, "isCapital", "S"],
+		["Match %s in %s",                                  "b", 13, "matchReg", "llo w", "Hello world"],
 
 
 
