@@ -34,7 +34,6 @@ public class BlockShape extends Shape {
 	public static const NumberShape:int = 3;
 	public static const CmdShape:int = 4;
 	public static const FinalCmdShape:int = 5;
-	public static const CmdOutlineShape:int = 6;
 	public static const HatShape:int = 7;
 	public static const ProcHatShape:int = 8;
 	// C-shaped blocks
@@ -42,6 +41,11 @@ public class BlockShape extends Shape {
 	public static const FinalLoopShape:int = 10;
 	// E-shaped blocks
 	public static const IfElseShape:int = 11;
+	
+	// Outline Shapes
+	public static const BooleanOutlineShape:int = 12;
+ 	public static const NumberOutlineShape:int = 13;
+	public static const CmdOutlineShape:int = 6;
 
 	// Geometry
 	public static const NotchDepth:int = 3;
@@ -187,6 +191,8 @@ public class BlockShape extends Shape {
 		case CmdShape:
 		case FinalCmdShape:		drawFunction = drawCmdShape; break;
 		case CmdOutlineShape:	drawFunction = drawCmdOutlineShape; break;
+		case BooleanOutlineShape:	drawFunction = drawBooleanOutlineShape; break;
+		case NumberOutlineShape:	drawFunction = drawNumberOutlineShape; break;
 		case LoopShape:
 		case FinalLoopShape:	drawFunction = drawLoopShape; break;
 		case IfElseShape:		drawFunction = drawIfElseShape; break;
@@ -221,7 +227,7 @@ public class BlockShape extends Shape {
 		drawTop(g);
 		drawRightAndBottom(g, topH, (shape != FinalCmdShape));
 	}
-
+	// Drawing functions for outlines
 	private function drawCmdOutlineShape(g:Graphics):void {
 		g.endFill(); // do not fill
 		g.lineStyle(2, 0xFFFFFF, 0.2);
@@ -229,6 +235,20 @@ public class BlockShape extends Shape {
 		drawRightAndBottom(g, topH, (shape != FinalCmdShape));
 		g.lineTo(0, CornerInset);
 	}
+	
+	private function drawBooleanOutlineShape(g:Graphics):void {
+		g.endFill();
+		g.lineStyle(2, 0xFFFFFF, 0.2);
+		drawBooleanShape(g);
+		g.lineTo(topH / 2, topH);
+	}
+
+	private function drawNumberOutlineShape(g:Graphics):void {
+ 		g.endFill();
+ 		g.lineStyle(2, 0xFFFFFF, 0.2);
+ 		drawNumberShape(g);
+ 		g.lineTo(topH / 2, topH);
+ 	}
 
 	private function drawTop(g:Graphics):void {
 		g.moveTo(0, CornerInset);
