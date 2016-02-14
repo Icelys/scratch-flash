@@ -105,6 +105,7 @@ public class Primitives {
 		new MotionAndPenPrims(app, interp).addPrimsTo(primTable);
 		new SoundPrims(app, interp).addPrimsTo(primTable);
 		new VideoMotionPrims(app, interp).addPrimsTo(primTable);
+		new ExperimentPrims(app, interp).addPrimsTo(primTable);
 		addOtherPrims(primTable);
 	}
 

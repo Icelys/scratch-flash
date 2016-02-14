@@ -72,6 +72,7 @@ public class BlockMenus implements DragClient {
 		if (menuName == 'list') menuHandler.listMenu(evt);
 		if (menuName == 'listDeleteItem') menuHandler.listItem(evt, true);
 		if (menuName == 'listItem') menuHandler.listItem(evt, false);
+		if (menuName == 'colorList') menuHandler.colorList(evt);
 		if (menuName == 'mathOp') menuHandler.mathOpMenu(evt);
 		if (menuName == 'motorDirection') menuHandler.motorDirectionMenu(evt);
 		if (menuName == 'note') menuHandler.notePicker(evt);
@@ -618,6 +619,18 @@ public class BlockMenus implements DragClient {
 				if (listName != myName) m.addItem(listName);
 			}
 		}
+		showMenu(m);
+	}
+
+	private function colorList(evt:MouseEvent):void {
+		var m:Menu = new Menu(setBlockArg, "colorList");
+		m.addItem("red");
+		m.addItem("orange");
+		m.addItem("yellow");
+		m.addItem("green");
+		m.addItem("blue");
+		m.addItem("purple");
+
 		showMenu(m);
 	}
 

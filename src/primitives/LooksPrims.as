@@ -54,6 +54,8 @@ public class LooksPrims {
 
 		primTable['say:duration:elapsed:from:']		= function(b:*):* { showBubbleAndWait(b, 'talk') };
 		primTable['say:']							= function(b:*):* { showBubble(b, 'talk') };
+		primTable['sayColor']                       = function(b:*):* { showBubbleColor(b, 'talk') };
+		primTable['sayColorTime']                   = function(b:*):* { showBubbleColorWait(b, 'talk') };
 		primTable['think:duration:elapsed:from:']	= function(b:*):* { showBubbleAndWait(b, 'think') };
 		primTable['think:']							= function(b:*):* { showBubble(b, 'think') };
 
@@ -158,7 +160,7 @@ public class LooksPrims {
 		if (interp.activeThread.firstTime) {
 			text = interp.arg(b, 0);
 			secs = interp.numarg(b, 1);
-			s.showBubble(text, type, b);
+			s.showBubble(text, type, b, 0);
 			if (s.visible) interp.redraw();
 			interp.startTimer(secs);
 		} else {
@@ -167,6 +169,54 @@ public class LooksPrims {
 			}
 		}
 	}
+
+
+	private function showBubbleColorWait(b:Block, type:String = null):void {
+		var text:*, secs:Number;
+		var s:ScratchSprite = interp.targetSprite();
+		if (s == null) return;
+		if (interp.activeThread.firstTime) {
+			text = interp.arg(b, 0);
+			secs = interp.numarg(b, 2);
+
+			var color:int;
+			switch (interp.arg(b, 1)){
+				case "red":
+					color = 0xFF0000;
+					break;
+				case "orange":
+					color = 0xFF7F00;
+					break;
+				case "yellow":
+					color = 0xFFFF00;
+					break;
+				case "green":
+					color = 0x00FF00;
+					break
+				case "blue":
+					color = 0x0000FF;
+					break;
+				case "purple":
+					color = 0xBF00BF;
+					break;
+				default:
+					color = 0;
+					break;
+			}
+
+			s.showBubble(text, type, b, color);
+			if (s.visible) interp.redraw();
+			interp.startTimer(secs);
+			
+		} else {
+			if (interp.checkTimer() && s.bubble && (s.bubble.getSource() == b)) {
+				s.hideBubble();
+			}
+		}
+	}
+
+
+
 
 	private function showBubble(b:Block, type:String = null):void {
 		var text:*, secs:Number;
@@ -178,7 +228,47 @@ public class LooksPrims {
 		} else { // talk or think command
 			text = interp.arg(b, 0);
 		}
-		s.showBubble(text, type, b);
+		s.showBubble(text, type, b, 0);
+		if (s.visible) interp.redraw();
+	}
+
+	private function showBubbleColor(b:Block, type:String = null):void {
+		var text:*, secs:Number;
+		var s:ScratchSprite = interp.targetSprite();
+		if (s == null) return;
+		if (type == null) { // combined talk/think/shout/whisper command
+			type = interp.arg(b, 0);
+			text = interp.arg(b, 1);
+		} else { // talk or think command
+			text = interp.arg(b, 0);
+		}
+
+		var color:int;
+		switch (interp.arg(b, 1)){
+			case "red":
+				color = 0xFF0000;
+				break;
+			case "orange":
+				color = 0xFF7F00;
+				break;
+			case "yellow":
+				color = 0xFFFF00;
+				break;
+			case "green":
+				color = 0x00FF00;
+				break
+			case "blue":
+				color = 0x0000FF;
+				break;
+			case "purple":
+				color = 0xBF00BF;
+				break;
+			default:
+				color = 0;
+				break;
+		}
+
+		s.showBubble(text, type, b, color);
 		if (s.visible) interp.redraw();
 	}
 

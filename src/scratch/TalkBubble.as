@@ -43,7 +43,7 @@ public class TalkBubble extends Sprite {
 	private var pDropX:int = 8;
 	private var lineWidth:Number = 3;
 
-	public function TalkBubble(s:String, type:String, style:String, source:Object) {
+	public function TalkBubble(s:String, type:String, style:String, source:Object, color:int) {
 		this.type = type;
 		this.style = style;
 		this.source = source;
@@ -59,6 +59,9 @@ public class TalkBubble extends Sprite {
 			pDrop = 5;
 			pDropX = 4;
 			lineWidth = 0.5;
+		}
+		if (color != 0){
+			outlineColor = color;
 		}
 		pointsLeft = true;
 		shape = new Shape();

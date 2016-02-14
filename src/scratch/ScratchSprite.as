@@ -574,7 +574,7 @@ public class ScratchSprite extends ScratchObj {
 
 	/* talk/think bubble support */
 
-	public function showBubble(s:*, type:String, source:Object, isAsk:Boolean = false):void {
+	public function showBubble(s:*, type:String, source:Object, color:int, isAsk:Boolean = false):void {
 		hideBubble();
 		if (s == null) s = 'NULL';
 		if (s is Number) {
@@ -586,7 +586,7 @@ public class ScratchSprite extends ScratchObj {
 		}
 		if (!(s is String)) s = s.toString();
 		if (s.length == 0) return;
-		bubble = new TalkBubble(s, type, isAsk ? 'ask' : 'say', source);
+		bubble = new TalkBubble(s, type, isAsk ? 'ask' : 'say', source, color);
 		parent.addChild(bubble);
 		updateBubble();
 	}

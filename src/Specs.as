@@ -73,6 +73,7 @@ public class Specs {
 		[11, "Parameter",	parameterColor],
 		[12, "List",		listColor],
 		[13, "My Blocks",   0x919191],
+		[14, "Experiments", 0x00cfac],
 		[20, "Extension",	extensionsColor],
 	];
 
@@ -142,6 +143,10 @@ public class Specs {
 
 		["say %s for %n secs",					" ", 2, "say:duration:elapsed:from:",	"Hello!", 2],
 		["say %s",								" ", 2, "say:",							"Hello!"],
+		["-"],
+		["Say %s in color %m.colorList for %n secs"," ", 2, "sayColorTime", "Hello!", "red", 2],
+		["Say %s in color %m.colorList",                    " ", 2, "sayColor", "Hello!", "red"],
+		["-"],
 		["think %s for %n secs",				" ", 2, "think:duration:elapsed:from:", "Hmm...", 2],
 		["think %s",							" ", 2, "think:",						"Hmm..."],
 		["-"],
@@ -396,9 +401,15 @@ public class Specs {
 		["%b nor %b",                                       "b", 13, "nor"],
 		["%s == %s",                                        "b", 13, "caseE"],
 		["-"],
-		["Is %n within %n of %n?",                          "b", 13, "isNear", 5, 10, 2],
+		["Is %n within %n of %n?",                          "b", 13, "isNear", 5, 10, 2]
+		["-"],
 		["Is %s uppercase?",                                "b", 13, "isCapital", "S"],
 		["Match %s in %s",                                  "b", 13, "matchReg", "llo w", "Hello world"],
+
+		["Set password to %s",                              " ", 14, "setPass"],
+		["Check password %s",                               "b", 14, "checkPass"],
+		["-"],
+		["%b ? %s : %s",                                    "r", 14, "ifElseR"],
 
 
 
