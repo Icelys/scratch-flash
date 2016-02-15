@@ -22,16 +22,16 @@ public class ExperimentPrims {
 		primTable["ifElseR"]     = primIE;
 	}
 
-	private function primSetPass(b:Block):void {
-		password = interp.arg(b, 0);
+	private function primSetPass(b:Array):void {
+		password = b[0];
 	}
 
-	private function primCheck(b:Block):Boolean {
-		return interp.arg(b, 0) == password;
+	private function primCheck(b:Array):Boolean {
+		return b[0] == password;
 	}
 
-	private function primIE(b:Block):* {
-		return interp.arg(b, 0) ? interp.arg(b, 1) : interp.arg(b, 2);
+	private function primIE(b:Array):* {
+		return b[0] ? b[1] : b[2];
 	}
 
 
