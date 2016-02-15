@@ -357,6 +357,7 @@ public class Specs {
 		["not %b",								"b", 8, "not"],
 		["-"],
 		["join %s %s",							"r", 8, "concatenate:with:",	"hello ", "world"],
+		["no limit join %s %s",							"r", 8, "noLimitConcatenate:with:",	"hello ", "world"],
 		["letter %n of %s",						"r", 8, "letter:of:",			1, "world"],
 
 /**/	["letters %n to %n of %s",              "r", 8, "lettersFrom", 1, 5, "Hello, world"],
