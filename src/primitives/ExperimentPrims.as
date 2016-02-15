@@ -16,7 +16,7 @@ public class ExperimentPrims {
 		this.interp = interpreter;
 	}
 
-	public function addPrimsTo(primTable:Dictionary):void {
+	public function addPrimsTo(primTable:Dictionary, specialTable:Dictionary):void {
 		primTable["setPass"]     = primSetPass;
 		primTable["checkPass"]   = primCheck;
 		primTable["ifElseR"]     = primIE;
