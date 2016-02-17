@@ -85,8 +85,8 @@ public class SoundPrims {
 			activeThread.tmp = 0;
 			activeThread.firstTime = true;
 			var block:Block = activeThread.block;
- +			activeThread.popState();
- +			if (block.nextBlock) activeThread.pushStateForBlock(block.nextBlock);
+ 			activeThread.popState();
+ 			if (block.nextBlock) activeThread.pushStateForBlock(block.nextBlock);
 		} else {
 			interp.doYield();
 		}
