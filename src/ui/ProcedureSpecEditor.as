@@ -54,12 +54,12 @@ public class ProcedureSpecEditor extends Sprite {
 	private const selectedLabelColor:int = 0xefa6ff;
 
 	public function ProcedureSpecEditor(originalSpec:String, inputNames:Array, warpFlag:Boolean, type:String, isEdit:Boolean) {
- +		this.isEdit = isEdit;
+ 		this.isEdit = isEdit;
 		addChild(base = new Shape());
 		setWidthHeight(350, 10);
 
 		shape = type == "b" ? BlockShape.BooleanShape : type == "r" ? BlockShape.NumberShape : BlockShape.CmdShape;
- +		blockShape = new BlockShape(shape, Specs.procedureColor);
+ 		blockShape = new BlockShape(shape, Specs.procedureColor);
 		blockShape.setWidthAndTopHeight(100, 25, true);
 		addChild(blockShape);
 
@@ -93,8 +93,8 @@ public class ProcedureSpecEditor extends Sprite {
 			'Add label text:',
 			'text',
 			"Doesn't report",
- +			'Reports number or text',
- +			'Reports true or false',
+ 			'Reports number or text',
+ 			'Reports true or false',
 		];
 	}
 
