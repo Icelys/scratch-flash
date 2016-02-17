@@ -356,9 +356,9 @@ public class ExtensionManager {
 				if (b.requestState == 2) {
 					b.requestState = 0;
 				activeThread.popState();
- +					activeThread.values.push(b.response);
- +					return;
- +				} else if (b.requestState == 0) {
+ 					activeThread.values.push(b.response);
+ 					return;
+ 				} else if (b.requestState == 0) {
 					request(extName, primOrVarName, args, b);
 				}
 			} else {
@@ -379,8 +379,8 @@ public class ExtensionManager {
 				if (value == undefined) value = 0; // default to zero if missing
 				if ('b' == b.type) value = (ext.port>0 ? 'true' == value : true == value); // coerce value to a boolean
 				activeThread.popState();
- +				activeThread.values.push(value);
- +				return;
+ 				activeThread.values.push(value);
+ 				return;
 			}
 		} else {
 			if ('w' == b.type) {
