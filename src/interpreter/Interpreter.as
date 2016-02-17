@@ -551,7 +551,7 @@ public class Interpreter {
 
 		if (activeThread.firstTime) {
 			if (!(b[0] is String)) return;
- +			var listArg:* = b[1];
+ 			var listArg:* = b[1];
 			if (listArg is Array) {
 				list = listArg as Array;
 			}
@@ -725,11 +725,11 @@ public class Interpreter {
 	private function primReturn(b:Array):void {
 		// Return from the innermost procedure. If not in a procedure, stop the thread.
 		var call:Block = activeThread.returnFromProcedure();
- +		if (call) {
- +			if (call.isReporter) {
- +				activeThread.values.push(b[0]);
- +			}
- +		} else {
+ 		if (call) {
+ 			if (call.isReporter) {
+ 				activeThread.values.push(b[0]);
+ 			}
+ 		} else {
 			yield = true;
 		}
 	}
@@ -744,10 +744,10 @@ public class Interpreter {
  		var v:Variable = activeThread.target.varCache[block.spec];
 		if (v == null) {
 		v = activeThread.target.varCache[block.spec] = activeThread.target.lookupOrCreateVar(block.spec);
- +			if (v == null) {
- +				activeThread.values.push(0);
- +				return;
- +			}
+ 			if (v == null) {
+ 				activeThread.values.push(0);
+ 				return;
+ 			}
 		}
 		activeThread.values.push(v.value);
 	}
@@ -788,19 +788,19 @@ public class Interpreter {
 	}
 
 	private function primGetParam(b:Array):* {
- +		var block:Block = activeThread.block;
- +		activeThread.popState();
- +		if (block.parameterIndex < 0) {
- +			var proc:Block = block.topBlock();
- +			if (proc.parameterNames) block.parameterIndex = proc.parameterNames.indexOf(block.spec);
- +			if (block.parameterIndex < 0) {
- +				activeThread.values.push(0);
- +				return;
- +			}
- +		}
- +		if (activeThread.args == null || block.parameterIndex >= activeThread.args.length) {
- +			activeThread.values.push(0);
- +			return;
+ 		var block:Block = activeThread.block;
+ 		activeThread.popState();
+ 		if (block.parameterIndex < 0) {
+ 			var proc:Block = block.topBlock();
+ 			if (proc.parameterNames) block.parameterIndex = proc.parameterNames.indexOf(block.spec);
+ 			if (block.parameterIndex < 0) {
+ 				activeThread.values.push(0);
+ 				return;
+ 			}
+ 		}
+ 		if (activeThread.args == null || block.parameterIndex >= activeThread.args.length) {
+ 			activeThread.values.push(0);
+ 			return;
 		}
 		activeThread.values.push(activeThread.args[block.parameterIndex]);
 	}
