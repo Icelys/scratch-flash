@@ -64,9 +64,9 @@ public class ListPrims {
 	}
 
 	private function primAppend(b:Array):void {
- +		var list:ListWatcher = listarg(b[1]);
+ 		var list:ListWatcher = listarg(b[1]);
 		if (!list) return;
-		listAppend(list, interp.arg(b, 0));
+		listAppend(list, b[0]);
 		if (list.visible) list.updateWatcher(list.contents.length, false, interp);
 	}
 
