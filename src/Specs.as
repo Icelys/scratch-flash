@@ -36,6 +36,8 @@ public class Specs {
 	public static const CHANGE_VAR:String = "changeVar:by:";
 	public static const GET_LIST:String = "contentsOfList:";
 	public static const CALL:String = "call";
+	public static const CALL_BOOLEAN:String = "callb";
+ 	public static const CALL_NUMBER:String = "callr";
 	public static const PROCEDURE_DEF:String = "procDef";
 	public static const GET_PARAM:String = "getParam";
 
@@ -255,6 +257,7 @@ public class Specs {
 		["create clone of %m.spriteOnly",		" ", 6, "createCloneOf"],
 		["delete this clone",					"f", 6, "deleteClone"],
 		["-"],
+		["report %s",						"f", 6, "report", ""],
 
 		// control - stage
 		["wait %n secs",						" ", 106, "wait:elapsed:from:",	1],
@@ -270,6 +273,8 @@ public class Specs {
 		["stop %m.stop",						"f", 106, "stopScripts", "all"],
 		["-"],
 		["create clone of %m.spriteOnly",		" ", 106, "createCloneOf"],
+		["-"],
+ 		["report %s",						"f", 106, "report", ""],
 
 		// sensing
 		["touching %m.touching?",				"b", 7, "touching:",			""],
@@ -352,6 +357,7 @@ public class Specs {
 		["not %b",								"b", 8, "not"],
 		["-"],
 		["join %s %s",							"r", 8, "concatenate:with:",	"hello ", "world"],
+		["no limit join %s %s",							"r", 8, "noLimitConcatenate:with:",	"hello ", "world"],
 		["letter %n of %s",						"r", 8, "letter:of:",			1, "world"],
 
 /**/	["letters %n to %n of %s",              "r", 8, "lettersFrom", 1, 5, "Hello, world"],
