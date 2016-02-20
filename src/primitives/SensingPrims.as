@@ -244,7 +244,7 @@ public class SensingPrims {
 
 	private function primDistanceTo(b:Array):Number {
 		var s:ScratchSprite = interp.targetSprite();
-		var p:Point = mouseOrSpritePosition(b[0]));
+		var p:Point = mouseOrSpritePosition(b[0]);
 		if ((s == null) || (p == null)) return 10000;
 		var dx:Number = p.x - s.scratchX;
 		var dy:Number = p.y - s.scratchY;
