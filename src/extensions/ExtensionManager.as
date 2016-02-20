@@ -427,13 +427,11 @@ public class ExtensionManager {
 			httpCall(ext, op, args);
  			activeThread.firstTime = false;
  			app.interp.doYield();
-			}
-		} else {
+			} else {
 			if (Scratch.app.jsEnabled) {
 				if (op == 'reset_all') {
 					app.externalCall('ScratchExtensions.stop', null, ext.name);
-				}
-				else {
+				} else {
 					// call a JavaScript extension function with the given arguments
 					app.externalCall('ScratchExtensions.runCommand', null, ext.name, op, args);
 				}
