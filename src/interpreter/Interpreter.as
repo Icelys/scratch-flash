@@ -278,7 +278,6 @@ public class Interpreter {
 				}
 			}
 		}
-	}
 
 	private function clearWarpBlock():void {
 		warpThread = null;
@@ -309,7 +308,7 @@ public class Interpreter {
  			activeThread.popState();
  			if (b.nextBlock) activeThread.pushStateForBlock(b.nextBlock);
  			return;
-	}
+	}}
 
 	// Returns true if the thread needs to yield while data is requested
 	public function checkBlockingArgs(b:Block):Boolean {
