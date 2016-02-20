@@ -655,7 +655,7 @@ public class ScratchRuntime {
 				activeHats.push(hat);
 			}
 		} else if ('whenSensorConnected' == hat.op) {
-			if (getBooleanSensor((hat.args[0] as BlockArg).argValue))) {
+			if (getBooleanSensor((hat.args[0] as BlockArg).argValue)) {
 				if (triggeredHats.indexOf(hat) == -1) { // not already trigged
 					// only start the stack if it is not already running
 					if (!interp.isRunning(hat, target)) interp.toggleThread(hat, target);
